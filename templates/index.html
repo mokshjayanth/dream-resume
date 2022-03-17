@@ -10,7 +10,7 @@
           <div class="col-md-8 text-white">
             <h2 class="h4 text-primary fw-normal mb-0">Hello, This is</h2>
             <h1 class="text-uppercase text-xl mb-0">{{request.user.first_name}}<span class="text-primary">{{request.user.last_name}}</span></h1>
-            <h2 class="h4 fw-normal mb-5">Developer Of Dream Resume</h2>
+            <h2 class="h4 fw-normal mb-5">Developer Of Dream Resume Django Project</h2>
             <p class="text-shadow">One Place. To All Your Resumes.</p>
           </div>
         </div>
@@ -23,16 +23,19 @@
           <p class="fw-bold text-primary text-uppercase letter-spacing-3">Alright! It's Time.</p>
           <h2 class="h3 lined">About</h2>
         </header>
-        <p class="lead text-muted">I have a Goal. I have goal to be part of an <strong class="text-dark">Amazing Software Develeopment Team </strong>that would build a revolutionary app that would make a great impact on people's lives. I am always inspired by such great developers and I aspire to become one.</p>
+        {% if request.user.username == 'moksh_jayanth' %}
+        <p class="lead text-muted">Ever since I was little, I've always wanted to work in an <strong class="text-dark">Amazing Software Develeopment Team </strong>that would build a revolutionary app which would make a great impact on people's lives. I am always inspired by such great developers and I aspire to become one.</p>
         <p class="text-muted">Hello, My name is Moksh Jayanth. I am Software Engineering student based in Bangalore, India. As for my work, I am a starter, currently looking for hands-on industrial experience.</p>
         <p class="text-muted mb-0">I love coding, I would love to apply my theoretical knowledge. Apply the skills that I have learned and explore new opportunities to build my practical portfolio. </p>
+
+        {% endif %}
       </div>
     </section>
     <!-- Education Section-->
     <section class="py-5 bg-light" id="education">
       <div class="container py-5">
         <header class="mb-5 pb-4">
-          <p class="fw-bold text-primary text-uppercase letter-spacing-3"></p>
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3">Yes, It's all just formality</p>
           <h2 class="text-uppercase lined">Education</h2>
         </header>
         <!--  Timeline -->
@@ -110,7 +113,7 @@
           <div class="row gy-5">
         {% endif %}
           <div class="col-md-4">
-            <h3 class="h4"><span class="text-primary me-2">{{forloop.counter}} </span><a href={% url 'content:detailed-skill' item.pk%}>{{item.name}}</a></h3>
+            <h3 class="h4"><span class="text-primary me-2">{{forloop.counter}}. </span><a href={% url 'content:detailed-skill' item.pk%}>{{item.name}}</a></h3>
             <p class="text-muted text-sm ms-4 ps-3">{{item.description}}</p>
             <a class = "nav-link text-uppercase" href="form/pdf/{{item.pk}}/">View Certificate</a>
           </div>

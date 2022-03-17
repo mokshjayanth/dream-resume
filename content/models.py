@@ -29,7 +29,7 @@ class Education(models.Model):
 class Project(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     duration = models.CharField(max_length=45)
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=60)
     description = models.TextField()
     programming_language = models.CharField(max_length=45)
 
@@ -38,7 +38,7 @@ class Project(models.Model):
 
 class Skill(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=60)
     description = models.TextField()
     certificate = models.FileField(max_length=455)
 

@@ -8,9 +8,11 @@
     {% csrf_token %}
     {{form|crispy}}
     <br>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary mb-3">Login</button>
+    <p class="text-muted mb-0"><span class="text-primary">** </span>use <span class="text-primary">'moksh_jayanth'</span> and <br> <span class="text-primary">'projectpassword'</span> as sample<br> credentials.</p>
   </form>
 </div>
-</div>  
+
+</div> 
 
 {% endblock content %}
