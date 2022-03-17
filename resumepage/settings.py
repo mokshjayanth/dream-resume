@@ -117,10 +117,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 VENV_PATH = os.path.dirname(BASE_DIR) # Just a reference to the MASTER DIR
-STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 #Custom User
 AUTH_USER_MODEL = "content.User"
