@@ -1,0 +1,28 @@
+<!-- navbar-->
+{% load static %}
+<header class="header">
+      <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="navbar">
+        <div class="container"><a class="navbar-brand" href=" "><img src="{% static 'img/logo.svg' %}" alt="" width="45"></a>
+        {% if request.user.is_authenticated %}
+        <span class="text-uppercase">Logged in as :</span> <span class="text-primary">{{request.user.username}}</span>
+        {% endif %}
+          <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link text-uppercase active" href="/#hero">Home <span class="sr-only">(current)</span></a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="/#about">About</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="/#education">Education</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="/#experience">Projects</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="#expertise">Certificates</a></li>
+              <li class="nav-item"><a class="nav-link text-uppercase" href="/#contact">Contact</a></li>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link text-uppercase" href={% url 'logout'  %}>Logout</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link text-uppercase" href={% url 'signup'  %}>Sign Up</a></li>
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>

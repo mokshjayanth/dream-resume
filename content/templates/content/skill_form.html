@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="border border-light p-3 mb-4">
+<div class="d-flex align-items-center justify-content-center">
+ <form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-14">
+        {{ form.name|as_crispy_field }}
+      </div>
+      <div class="col-14">
+        {{ form.description|as_crispy_field }}
+      </div>
+    </div>
+    {{ form.certificate|as_crispy_field }}
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>  
+
+{% endblock content %}

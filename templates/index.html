@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+  
+{% block content %}
+{% load static %}
+
+<!-- Hero Section-->
+    <section class="hero bg-cover bg-center py-5" id="hero" style="background: url({% static 'img/author.jpg' %})">
+      <div class="container py-5 my-5 z-index-20 position-relative">
+        <div class="row py-lg-5 mt-5">
+          <div class="col-md-8 text-white">
+            <h2 class="h4 text-primary fw-normal mb-0">Hello, This is</h2>
+            <h1 class="text-uppercase text-xl mb-0">{{request.user.first_name}}<span class="text-primary">{{request.user.last_name}}</span></h1>
+            <h2 class="h4 fw-normal mb-5">Developer Of Dream Resume</h2>
+            <p class="text-shadow">One Place. To All Your Resumes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section-->
+    <section class="py-5 bg-light" id="about" >
+      <div class="container py-5" >
+        <header class="mb-5">
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3">Alright! It's Time.</p>
+          <h2 class="h3 lined">About</h2>
+        </header>
+        <p class="lead text-muted">I have a Goal. I have goal to be part of an <strong class="text-dark">Amazing Software Develeopment Team </strong>that would build a revolutionary app that would make a great impact on people's lives. I am always inspired by such great developers and I aspire to become one.</p>
+        <p class="text-muted">Hello, My name is Moksh Jayanth. I am Software Engineering student based in Bangalore, India. As for my work, I am a starter, currently looking for hands-on industrial experience.</p>
+        <p class="text-muted mb-0">I love coding, I would love to apply my theoretical knowledge. Apply the skills that I have learned and explore new opportunities to build my practical portfolio. </p>
+      </div>
+    </section>
+    <!-- Education Section-->
+    <section class="py-5 bg-light" id="education">
+      <div class="container py-5">
+        <header class="mb-5 pb-4">
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3"></p>
+          <h2 class="text-uppercase lined">Education</h2>
+        </header>
+        <!--  Timeline -->
+        <ul class="timeline">
+        {% for item in education %}
+        <!-- Timeline item-->
+              <li class="timeline-item ms-3 pb-4">
+                <div class="timeline-arrow"></div>
+                <div class="row gx-0 gy-4">
+                  <div class="col-lg-5">
+                    <p class="fw-bold mb-2 text-uppercase text-sm">{{item.duration}}</p>
+                    <h2 class="h5 mb-0 text-uppercase"><a href={% url 'content:detailed-edu' item.pk%}>{{item.course}}</a></h2>
+                    <p class="text-sm mb-0">{{item.university}}</p><span class="small text-muted">{{item.place}}</span>
+                  </div>
+                  <div class="col-lg-7">
+                    <p class="text-muted">{{item.description}}</p>
+                  </div>
+                </div>
+              </li>
+        
+        {% endfor %}
+        </ul>
+        <br>
+        <div class="container"><a class="btn btn-primary" href = "form/eduform">Add Record</a> </div>
+      </div>
+    </section>
+
+   
+    <!-- Projects Section        -->
+    <section class="py-5" id="experience">
+      <div class="container py-5">
+        <header class="mb-5 pb-4">
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3">Yes. Welcome to Projects timeline!</p>
+          <h2 class="text-uppercase lined">Projects</h2>
+        </header>
+        <!--  Timeline -->
+        <ul class="timeline">
+        {% for item in projects %}
+        <!-- Timeline item-->
+              <li class="timeline-item ms-3 pb-4">
+                <div class="timeline-arrow"></div>
+                <div class="row gx-0 gy-4">
+                  <div class="col-lg-5">
+                    <p class="fw-bold mb-2 text-uppercase text-sm">{{item.duration}}</p>
+                    <h2 class="h5 mb-0 text-uppercase"><a href={% url 'content:detailed-project' item.pk%}>{{item.name}}</a></h2>
+                    <p class="text-sm mb-0">{{item.programming_language}}
+                  </div>
+                  <div class="col-lg-7">
+                    <p class="text-muted">{{item.description}}</p>
+                  </div>
+                </div>
+              </li>
+        
+        {% endfor %}
+              
+        </ul>
+        <br>
+        <div class="container"><a class="btn btn-primary" href = "form/proform">Add Project</a> </div>
+      </div>
+    </section> 
+
+
+
+     <!-- Expertise Section        -->
+    <section class="py-5" id="expertise">
+      <div class="container py-5">
+        <header class="mb-5 pb-4">
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3">Batman would be jealous.</p>
+          <h2 class="text-uppercase lined">Skills</h2>
+        </header>
+        {% comment %} <div class="row gy-5"> {% endcomment %}
+        {% for item in skills %}
+
+        {% if forloop.counter0|divisibleby:3 %}
+          <div class="row gy-5">
+        {% endif %}
+          <div class="col-md-4">
+            <h3 class="h4"><span class="text-primary me-2">{{forloop.counter}} </span><a href={% url 'content:detailed-skill' item.pk%}>{{item.name}}</a></h3>
+            <p class="text-muted text-sm ms-4 ps-3">{{item.description}}</p>
+            <a class = "nav-link text-uppercase" href="form/pdf/{{item.pk}}/">View Certificate</a>
+          </div>
+         {% if forloop.counter|divisibleby:3 %}
+          </div>
+          </br>
+        {% endif %}
+        
+        {% endfor %}
+        <div class="container"><a class="btn btn-primary" href = "form/skillform">Add Skill</a></div>
+
+        </div>
+         
+
+      </div>
+    </section> 
+    <!-- Contact Section -->
+    <section class="bg-light py-5" id="contact">
+      <div class="container py-5">
+        <header class="mb-5 pb-4">
+          <p class="fw-bold text-primary text-uppercase letter-spacing-3">Peace.</p>
+          <h2 class="text-uppercase lined">Contacts</h2>
+        </header>
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6"><a class="px-4 py-5 text-center contact-item shadow-sm reset-anchor d-block" href="tel:+91 6366221304"><i class="fas fa-solid fa-phone fa-2x mb-4"></i>
+              <h4 class="contact-item-title h5 text-uppercase">Phone</h4>
+              <p class="text-sm mb-0">+91 6366221304</p></a></div>
+          <div class="col-lg-3 col-md-6"><a class="px-4 py-5 text-center contact-item shadow-sm reset-anchor d-block" href="#"><i class="fas fa-map-marker-alt fa-2x mb-4"></i>
+              <h4 class="contact-item-title h5 text-uppercase">Location</h4>
+              <p class="text-sm mb-0">Bangalore, India</p></a></div>
+          <div class="col-lg-3 col-md-6"><a class="px-4 py-5 text-center contact-item shadow-sm reset-anchor d-block" href="mailto:mokshjayanth@gmail.com"><i class="fas fa-solid fa-envelope fa-2x mb-4"></i>
+              <h4 class="contact-item-title h5 text-uppercase">Email</h4>
+              <p class="text-sm mb-0">mokshjayanth@gmail.com</p></a></div>
+          <div class="col-lg-3 col-md-6"><a class="px-4 py-5 text-center contact-item shadow-sm reset-anchor d-block" href="https://www.linkedin.com/in/moksh-jayanth/"><i class="fab fa-linkedin-in fa-2x mb-4"></i>
+              <h4 class="contact-item-title h5 text-uppercase">LinkedIn</h4>
+              <p class="text-sm mb-0">Bangalore, India</p></a></div>
+        </div>
+      </div>
+    </section>
+
+{% endblock content %}
+    
+   

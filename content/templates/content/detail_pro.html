@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3 style="text-align: center;"> Do you wish to?</h3>
+<div class="border border-light p-3 mb-4">
+  <div class="d-flex align-items-center justify-content-center">
+      
+      <div class="row">
+            <div class="col-6">
+              <a type="submit" class="btn btn-primary" href={% url 'content:update-pro' record.pk %}>Update</a>
+            </div>
+            <div class="col-6">
+              <a type="submit" class="btn btn-primary" href={% url 'content:delete-pro' record.pk %}>Delete</a>
+            </div>
+      </div>
+        
+  </div>
+</div>  
+
+{% endblock content %}
