@@ -113,7 +113,7 @@
           <div class="row gy-5">
         {% endif %}
           <div class="col-md-4">
-            <h3 class="h4"><span class="text-primary me-2">{{forloop.counter}}. </span><a href={% url 'content:detailed-skill' item.pk%}>{{item.name}}</a></h3>
+            <h3 class="h4"><span class="text-uppercase">{{forloop.counter}}.&nbsp;</span><a href={% url 'content:detailed-skill' item.pk%}>{{item.name}}</a></h3>
             <p class="text-muted text-sm ms-4 ps-3">{{item.description}}</p>
             <a class = "nav-link text-uppercase" href="form/pdf/{{item.pk}}/">View Certificate</a>
           </div>
