@@ -14,8 +14,8 @@ DreamResume is a project built using **Django** as Backend server-side scripting
 
 
 ### FEATURES OF THE PROJECT
-- User can Signup and Login to the site
-- User can Add Education, Skill and Project records to the site.
+- Users can Signup and Login to the site
+- Users can Add Education, Skill and Project records to the site.
 
 ### REFERENCES AND CREDITS
 
