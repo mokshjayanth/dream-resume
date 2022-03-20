@@ -40,3 +40,11 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ('first_name', 'last_name', 'email','username',)
         field_classes = {'username': UsernameField}
+
+
+class AboutForm(forms.ModelForm):
+    class Meta:
+        model = About
+        fields = (
+            'about',
+        )

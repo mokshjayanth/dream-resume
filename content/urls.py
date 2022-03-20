@@ -8,6 +8,8 @@ urlpatterns = [
     path('eduform/', AddEdu.as_view(), name='add-edu'),
     path('proform/', AddPro.as_view(),name='add-pro'),
     path('skillform/', AddSkill.as_view(), name='add-skill'),
+    path('aboutform/', AddAbout.as_view(), name='add-about'),
+    path('aboutform/<int:pk>', UpdateAbout.as_view(), name='update-about'),
     path('pdf/<pk>/', pdf_view),
     path('eduform/detail/<int:pk>', DetailedEdu.as_view(),name="detailed-edu"),
     path('projectform/detail/<int:pk>', DetailedPro.as_view(),name="detailed-project"),

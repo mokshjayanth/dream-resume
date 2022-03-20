@@ -44,12 +44,36 @@ class Index(LoginRequiredMixin,ListView):
         qs1 = Education.objects.all().filter(user_profile =user.userprofile)
         qs2 = Skill.objects.all().filter(user_profile =user.userprofile)
         qs3 = Project.objects.all().filter(user_profile =user.userprofile)
+        qs4 = About.objects.all().filter(user_profile =user.userprofile)
         context = super().get_context_data(**kwargs)
         context['education'] = qs1
         context['skills'] = qs2
         context['projects'] = qs3
+        context['about'] = qs4
         return context
-    
+
+class AddAbout(LoginRequiredMixin, CreateView):
+    template_name = "content/about_form.html"
+    model = About
+    form_class = AboutForm
+
+    def get_success_url(self):
+        return reverse("home")
+
+    def form_valid(self, form):
+        about = form.save(commit=False)
+        about.user_profile = self.request.user.userprofile
+        about.is_there = True
+        about.save()
+        return super().form_valid(form)
+
+class UpdateAbout(LoginRequiredMixin, UpdateView):
+    template_name = "content/about_form.html"
+    queryset = About.objects.all()
+    form_class = AboutForm
+
+    def get_success_url(self):
+        return "/"
 
 class DetailedEdu(DetailView):
     template_name = "content/detail_edu.html"

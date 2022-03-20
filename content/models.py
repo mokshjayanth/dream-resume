@@ -45,6 +45,13 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+
+class About(models.Model):
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    about = models.TextField()
+    is_there = models.BooleanField(default=False)
+
+
 def post_user_created(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
