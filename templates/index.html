@@ -26,7 +26,7 @@
         {% if request.user.username == 'moksh_jayanth' %}
         {% for item in about %}
         <p class="lead text-muted">Ever since I was little, I've always wanted to work in an <strong class="text-dark">Amazing Software Develeopment Team </strong>that would build a revolutionary app which would make a great impact on people's lives. I am always inspired by such great developers and I aspire to become one.</p>
-        <p class="text-muted">Hello, My name is Moksh Jayanth. I am Software Engineering student based in Bangalore, India. As for my work, I am a starter, currently looking for hands-on industrial experience.</p>
+        <p class="text-muted">Hello, My name is Moksh Jayanth. I am Software Engineering student based in Bangalore, India. As for my work, currently looking for more hands-on industrial experience.</p>
         <p class="text-muted mb-0">I love coding, I would love to apply my theoretical knowledge. Apply the skills that I have learned and explore new opportunities to build my practical portfolio. </p></br>
         <a class="btn btn-primary" href = {% url 'content:update-about' item.pk %}>Update About</a>
         {% endfor %}
